@@ -22,11 +22,17 @@ public abstract class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
+        /*Запрос у FragmentManager фрагмента, соответствующего идентификатору.
+        Если этот фрагмент уже находится в списке, то FragmentManager возвращает его, иначе null*/
         Fragment fragment =
                 fragmentManager.findFragmentById(R.id.a_main_frame_layout_fragment_container);
 
+        /*При воссоздании активности FragmentManager сохранит список фрагментов и вернет уже
+        существующий по запросу, но если фрагмент запрашивается в первые, нужно его создать*/
         if (fragment == null) {
             fragment = createFragment();
+            /*Создание транзакции фрагмента, включить в нее одну операцию добавления
+             и ее закрепление*/
             fragmentManager.beginTransaction().
                     add(R.id.a_main_frame_layout_fragment_container, fragment).commit();
         }
