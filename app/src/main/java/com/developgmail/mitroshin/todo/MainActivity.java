@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentManager;
 
 /*Контроллер для представления activity_main.xml.*/
 
+/*Для использования фрагментов, нужны активности, которые умеют управлять фрагментами.
+Для управления фрагментами из библиотеки поддержки используется класс FragmentActivity.*/
 public abstract class MainActivity extends FragmentActivity {
 
     protected abstract Fragment createFragment();
