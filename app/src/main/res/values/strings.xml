@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ToDo</string>
+    <string name="text_enter_a_title_">Enter a title for the task</string>
 </resources>
