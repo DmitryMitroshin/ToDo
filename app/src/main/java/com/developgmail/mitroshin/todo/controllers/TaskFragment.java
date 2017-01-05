@@ -8,6 +8,9 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 
 import com.developgmail.mitroshin.todo.R;
@@ -25,6 +28,8 @@ public class TaskFragment extends Fragment {
 
     /*Ссылки на виджеты представления*/
     private EditText mEditTextTaskTitle;
+    private Button mButtonDate;
+    private CheckBox mCheckBoxComplete;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,6 +55,11 @@ public class TaskFragment extends Fragment {
         findAllViewById(view);
         addAllListeners();
 
+        /*На кнопке отображается дата текущего экземпляра*/
+        mButtonDate.setText(mTask.getDate().toString());
+        /*TODO Кнопка пока заблокирована. Добавить на нее вызов диалогового окна DatePicker*/
+        mButtonDate.setEnabled(false);
+
         return view;
     }
 
@@ -72,10 +82,21 @@ public class TaskFragment extends Fragment {
 
             }
         });
+
+        /*Слушатель для ввода статуса задачи*/
+        mCheckBoxComplete.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                /*Статус задачи устанавливается в зависимости от состояния CheckBox*/
+                mTask.setComplete(b);
+            }
+        });
     }
 
     /*Метод связывает объекты контроллера с объектами представления*/
     private void findAllViewById(View view) {
         mEditTextTaskTitle = (EditText) view.findViewById(R.id.f_task_details_edit_text_task_title);
+        mButtonDate = (Button) view.findViewById(R.id.f_task_details_button_task_date);
+        mCheckBoxComplete = (CheckBox) view.findViewById(R.id.f_task_details_check_box_complete);
     }
 }
