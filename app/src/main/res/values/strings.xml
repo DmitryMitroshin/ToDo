@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">ToDo</string>
     <string name="text_enter_a_title_">Enter a title for the task</string>
+    <string name="text_title">Title</string>
+    <string name="text_details">Details</string>
+    <string name="text_complete">Complete?</string>
 </resources>

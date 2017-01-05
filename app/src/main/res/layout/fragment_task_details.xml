@@ -5,9 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_title"
+        style="?android:listSeparatorTextViewStyle"/>
+
     <EditText
         android:id="@+id/f_task_details_edit_text_task_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/text_enter_a_title_"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_details"
+        style="?android:listSeparatorTextViewStyle"/>
+
+    <Button
+        android:id="@+id/f_task_details_button_task_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"/>
+
+    <CheckBox
+        android:id="@+id/f_task_details_check_box_complete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/text_complete"/>
 </LinearLayout>
