@@ -14,6 +14,8 @@ import com.developgmail.mitroshin.todo.R;
 Для управления фрагментами из библиотеки поддержки используется класс FragmentActivity.*/
 public abstract class MainActivity extends FragmentActivity {
 
+    /*Абстрактный метод, реализуется в активностях, выполняющих роль хоста.
+    Возвращает экземпляр соответствующего фрагмента*/
     protected abstract Fragment createFragment();
 
     @Override
