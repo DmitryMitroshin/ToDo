@@ -13,10 +13,4 @@ public class TaskActivity extends MainActivity {
     protected Fragment createFragment() {
         return new TaskFragment();
     }
-
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_task, );
-//    }
 }
