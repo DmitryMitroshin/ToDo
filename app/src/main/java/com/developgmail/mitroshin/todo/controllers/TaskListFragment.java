@@ -10,6 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.developgmail.mitroshin.todo.R;
+import com.developgmail.mitroshin.todo.model.Task;
+import com.developgmail.mitroshin.todo.util.TaskAdapter;
+import com.developgmail.mitroshin.todo.util.TaskLab;
+
+import java.util.List;
 
 /*Контроллер для представления fragment_task_details.xml
 Контроллер инкапсулирует список экземпляров класса Task и
@@ -19,6 +24,9 @@ public class TaskListFragment extends Fragment {
 
     /*Ссылка на виджет для отображения списка*/
     private RecyclerView mRecyclerViewTaskList;
+
+    /*Ссылка на объект адаптера*/
+    private TaskAdapter mTaskAdapter;
 
     @Nullable
     @Override
@@ -32,6 +40,15 @@ public class TaskListFragment extends Fragment {
         LayoutManager управляет позиционированием элементов, а также определяет поведение прокрутки*/
         mRecyclerViewTaskList.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        updateUI();
+
         return view;
+    }
+
+    private void updateUI() {
+        TaskLab taskLab = TaskLab.getTaskLab(getActivity());
+        List<Task> listTask = taskLab.getListTask();
+        mTaskAdapter = new TaskAdapter(listTask, this);
+        mRecyclerViewTaskList.setAdapter(mTaskAdapter);
     }
 }
