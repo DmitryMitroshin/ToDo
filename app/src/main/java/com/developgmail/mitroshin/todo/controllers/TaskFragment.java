@@ -14,7 +14,11 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 
 import com.developgmail.mitroshin.todo.R;
+import com.developgmail.mitroshin.todo.host.TaskActivity;
 import com.developgmail.mitroshin.todo.model.Task;
+import com.developgmail.mitroshin.todo.util.TaskLab;
+
+import java.util.UUID;
 
 /*Контроллер для представления fragment_task_details.xml
 Контроллер взаимодействует с объектами модели и представления.
@@ -35,8 +39,12 @@ public class TaskFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        /*При создании фрагмента, будет создаваться экземпляр класса модели*/
-        mTask = new Task();
+        /*Отличается от кода выборки дополнения из кода активности только вызовом getActivity().
+        getIntent() возвращает интерн, который привел к запуску активности детализации.
+        В этом интенте лежит дополнение - идентификатор.*/
+        UUID taskID = (UUID) getActivity().getIntent().
+                getSerializableExtra(TaskActivity.EXTRA_TASK_ID);
+        mTask = TaskLab.getTaskLab(getActivity()).getTaskById(taskID);
     }
 
     /*Заполнение макета представления фрагмента и возврат заполненного фргмента активности-хосту*/
