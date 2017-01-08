@@ -1,13 +1,14 @@
 package com.developgmail.mitroshin.todo.util;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.developgmail.mitroshin.todo.R;
 import com.developgmail.mitroshin.todo.controllers.TaskListFragment;
+import com.developgmail.mitroshin.todo.host.TaskActivity;
 import com.developgmail.mitroshin.todo.model.Task;
 
 /*Класс необходим для удержания объектов View.
@@ -51,9 +52,12 @@ public class TaskHolder extends RecyclerView.ViewHolder implements View.OnClickL
         mCheckBoxComplete.setChecked(mTask.isComplete());
     }
 
+    /*Метод отрбатывает при клике на виджет элемента списка*/
     @Override
     public void onClick(View view) {
-        Toast.makeText(mTaskListFragment.getActivity(), mTask.getTitle() + " clicked!",
-                Toast.LENGTH_SHORT).show();
+        /*Вызов активности детализации*/
+        Intent intent = TaskActivity.newIntent(mTaskListFragment.getActivity(),
+                mTask.getUUID());
+        mTaskListFragment.startActivity(intent);
     }
 }
