@@ -63,6 +63,9 @@ public class TaskFragment extends Fragment {
         findAllViewById(view);
         addAllListeners();
 
+        mEditTextTaskTitle.setText(mTask.getTitle());
+        mCheckBoxComplete.setChecked(mTask.isComplete());
+
         /*На кнопке отображается дата текущего экземпляра*/
         mButtonDate.setText(mTask.getDate().toString());
         /*TODO Кнопка пока заблокирована. Добавить на нее вызов диалогового окна DatePicker*/
