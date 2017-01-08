@@ -41,7 +41,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskHolder> {
         /*Заполнение макета отдельного элемента списка. */
         /* TODO Шаблон взят из стандартной библиотеки*/
         View view = layoutInflater.inflate(R.layout.item_task, parent, false);
-        return new TaskHolder(view);
+        return new TaskHolder(view, mTaskListFragment);
     }
 
     /*Данный метод связывает представление View объекта ViewHolder с объектом модели из списка,
