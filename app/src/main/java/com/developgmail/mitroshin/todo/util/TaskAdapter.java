@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.developgmail.mitroshin.todo.R;
 import com.developgmail.mitroshin.todo.controllers.TaskListFragment;
 import com.developgmail.mitroshin.todo.model.Task;
 
@@ -39,7 +40,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskHolder> {
         LayoutInflater layoutInflater = LayoutInflater.from(mTaskListFragment.getActivity());
         /*Заполнение макета отдельного элемента списка. */
         /* TODO Шаблон взят из стандартной библиотеки*/
-        View view = layoutInflater.inflate(android.R.layout.simple_list_item_1, parent, false);
+        View view = layoutInflater.inflate(R.layout.item_task, parent, false);
         return new TaskHolder(view);
     }
 
@@ -48,7 +49,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskHolder> {
     @Override
     public void onBindViewHolder(TaskHolder holder, int position) {
         Task task = mListTask.get(position);
-        holder.mTextViewTitle.setText(task.getTitle());
+        holder.bindTask(task);
     }
 
     @Override
