@@ -45,10 +45,25 @@ public class TaskListFragment extends Fragment {
         return view;
     }
 
+    /*Метод вызывается ОС перед отображением активности на переднем плане*/
+    @Override
+    public void onResume() {
+        super.onResume();
+        /*Нужно обновить данные в списке, на случай, если их изменили в активности детализации*/
+        updateUI();
+    }
+
     private void updateUI() {
         TaskLab taskLab = TaskLab.getTaskLab(getActivity());
         List<Task> listTask = taskLab.getListTask();
-        mTaskAdapter = new TaskAdapter(listTask, this);
-        mRecyclerViewTaskList.setAdapter(mTaskAdapter);
+
+        /*Создавать новый адаптер и заполнять список, нужно только в том случае,
+        если он еще не существует. Иначе нужно просто сообщить ему, что могли произойти изменения.*/
+        if (mTaskAdapter == null) {
+            mTaskAdapter = new TaskAdapter(listTask, this);
+            mRecyclerViewTaskList.setAdapter(mTaskAdapter);
+        } else {
+            mTaskAdapter.notifyDataSetChanged();
+        }
     }
 }
