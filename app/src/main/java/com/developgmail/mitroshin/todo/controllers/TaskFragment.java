@@ -14,7 +14,6 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 
 import com.developgmail.mitroshin.todo.R;
-import com.developgmail.mitroshin.todo.host.TaskActivity;
 import com.developgmail.mitroshin.todo.model.Task;
 import com.developgmail.mitroshin.todo.util.TaskLab;
 
@@ -42,11 +41,9 @@ public class TaskFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        /*Отличается от кода выборки дополнения из кода активности только вызовом getActivity().
-        getIntent() возвращает интерн, который привел к запуску активности детализации.
-        В этом интенте лежит дополнение - идентификатор.*/
-        UUID taskID = (UUID) getActivity().getIntent().
-                getSerializableExtra(TaskActivity.EXTRA_TASK_ID);
+        /*Выборка аргументов фрагмента*/
+        UUID taskID = (UUID) getArguments().getSerializable(ARG_TASK_ID);
+
         mTask = TaskLab.getTaskLab(getActivity()).getTaskById(taskID);
     }
 
