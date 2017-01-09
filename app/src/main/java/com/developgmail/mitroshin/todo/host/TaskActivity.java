@@ -13,11 +13,13 @@ import java.util.UUID;
 
 public class TaskActivity extends MainActivity {
 
-    public static final String EXTRA_TASK_ID = "com.developgmail.mitroshin.todo.task_id";
+    private static final String EXTRA_TASK_ID = "com.developgmail.mitroshin.todo.task_id";
 
     @Override
     protected Fragment createFragment() {
-        return new TaskFragment();
+        /*Вместо конструктора используется метод, создающий фрагмент вместе с дополнениями*/
+        UUID taskId = (UUID) getIntent().getSerializableExtra(EXTRA_TASK_ID);
+        return TaskFragment.newInstance(taskId);
     }
 
     public static Intent newIntent(Context context, UUID taskID) {

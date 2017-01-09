@@ -35,6 +35,9 @@ public class TaskFragment extends Fragment {
     private Button mButtonDate;
     private CheckBox mCheckBoxComplete;
 
+    /*Ключ для дополнения, получаемого в виде аргумента фрагмента при его создании*/
+    public static final String ARG_TASK_ID = "task_id";
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +75,19 @@ public class TaskFragment extends Fragment {
         mButtonDate.setEnabled(false);
 
         return view;
+    }
+
+    /*Метод создает экземпляр фрагмента, упаковывает и задает его аргументы*/
+    public static TaskFragment newInstance(UUID taskId) {
+        /*Дополнения нужно сохранить в объекте Bundle*/
+        Bundle args = new Bundle();
+        /*В объекте они хранятся в виде пар ключ-значение*/
+        args.putSerializable(ARG_TASK_ID, taskId);
+
+        /*Создание фрагмента и прикрепление к нему аргументов*/
+        TaskFragment fragment = new TaskFragment();
+        fragment.setArguments(args);
+        return fragment;
     }
 
     /*Метод обавляет слушатели события для виджетов*/
