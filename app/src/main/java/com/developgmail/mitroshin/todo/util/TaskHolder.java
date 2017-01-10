@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.developgmail.mitroshin.todo.R;
 import com.developgmail.mitroshin.todo.controllers.TaskListFragment;
-import com.developgmail.mitroshin.todo.host.TaskActivity;
+import com.developgmail.mitroshin.todo.host.TaskPagerActivity;
 import com.developgmail.mitroshin.todo.model.Task;
 
 /*Класс необходим для удержания объектов View.
@@ -56,7 +56,7 @@ public class TaskHolder extends RecyclerView.ViewHolder implements View.OnClickL
     @Override
     public void onClick(View view) {
         /*Вызов активности детализации*/
-        Intent intent = TaskActivity.newIntent(mTaskListFragment.getActivity(),
+        Intent intent = TaskPagerActivity.newIntent(mTaskListFragment.getActivity(),
                 mTask.getUUID());
         mTaskListFragment.startActivity(intent);
     }
